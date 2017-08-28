@@ -1,8 +1,8 @@
 {
   "name": "google-calendar",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
+    "gh-pages": "^1.0.0",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-big-calendar": "^0.14.4",
@@ -11,8 +11,11 @@
   "devDependencies": {
     "react-scripts": "1.0.12"
   },
+  "homepage": " https://zhdmitry.github.io/gcal",
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
