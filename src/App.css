@@ -19,6 +19,119 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+button {
+  outline: none;
+  padding: 5px;
+  background: #dddddd;
+}
+
+.week-event__popover {
+  padding: 15px;
+  border-radius: 2px;
+  background: white;
+  width: 200px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.Popover {
+  z-index: 99999;
+}
+
+.input {
+  width: 100%;
+  padding-top: 5px;
+}
+
+.rbc-event.rbc-selected {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.rbc-event {
+  background-color: initial;
+  border: 1px solid !important;
+  cursor: pointer;
+  padding: 2px 5px;
+  /* background-color: #3174ad; */
+  border-radius: 0px;
+  color: #fff;
+}
+.rbc-event-label,
+.rbc-time-header > div:nth-child(2) {
+  display: none;
+}
+
+.rbc-date-cell {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rbc-header {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-info {
+  font-size: 12px;
+}
+
+.red {
+  background: red;
+}
+
+.ReactModal__Overlay {
+  z-index: 999;
+}
+
+.rbc-time-slot {
+  /* position: absolute; */
+}
+.rbc-timeslot-group {
+  /* position: re */
+}
+
+.rbc-day-slot .rbc-time-slot {
+  border-top: 0px;
+}
+
+.rbc-time-content {
+  border-top: 1px;
+}
+
+.rbc-time-slot span {
+  /* position: absolute; */
+  /* top: 20px; */
+}
+
+.rbc-timeslot-group div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rbc-timeslot-group div:last-child {
+  display: none;
+}
+
+.Popover-body .card-action {
+  padding: 0px;
+}
+
+.input-field .material-icons {
+  top: 10px;
+}
+
+.ReactModal__Content {
+  left: 120px !important;
+  right: 120px !important;
+  bottom: initial !important;
 }

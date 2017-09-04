@@ -2,11 +2,18 @@
   "name": "google-calendar",
   "version": "0.1.0",
   "dependencies": {
+    "actionware": "^7.2.1",
     "gh-pages": "^1.0.0",
     "moment": "^2.18.1",
+    "popper.js": "^1.12.5",
     "react": "^15.6.1",
     "react-big-calendar": "^0.14.4",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-modal": "^2.2.4",
+    "react-popover": "^0.4.16",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "stateware": "^1.5.1"
   },
   "devDependencies": {
     "react-scripts": "1.0.12"

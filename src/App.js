@@ -2,8 +2,8 @@
 
 import React, { Component } from "react";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import BigCalendar from "react-big-calendar";
-import moment from "moment";
+import "./App.css";
+import Calendar from "./containers/Calendar";
 
 var DISCOVERY_DOCS = [
   "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"
@@ -30,7 +30,6 @@ class App extends Component {
   }
 
   initClient = err => {
-    console.log(err);
     this.setState({ gapiReady: true });
     gapi.client
       .init({
@@ -50,65 +49,9 @@ class App extends Component {
   updateSigninStatus = isSignedIn => {
     console.log(isSignedIn);
     if (isSignedIn) {
-      this.listUpcomingEvents();
+      this.setState({ signIn: true });
     }
   };
-  listUpcomingEvents = () => {
-    gapi.client.calendar.events
-      .list({
-        calendarId: "primary",
-        timeMin: new Date().toISOString(),
-        showDeleted: false,
-        singleEvents: true,
-        maxResults: 10,
-        orderBy: "startTime"
-      })
-      .then(response => {
-        var events = response.result.items;
-        console.log("events");
-        console.log(events);
-        this.setState({
-          events: events.map(this.mapEvent)
-        });
-      });
-  };
-  createEvent = ({ start, end, title = "test title" + Math.random() }) => {
-    console.log(start, end);
-    const event = this.toGoogleEvent({ start, end, title });
-    const request = gapi.client.calendar.events.insert({
-      calendarId: "primary",
-      resource: event
-    });
-    request.execute(event => {
-      console.log(event);
-      const newEvents = [...this.state.events, this.mapEvent(event)];
-      this.setState({
-        events: newEvents
-      });
-    });
-  };
-
-  toGoogleEvent({ start, end, title }) {
-    console.log(start, end);
-    return {
-      summary: title,
-      start: {
-        dateTime: start,
-        timeZone: "America/Los_Angeles"
-      },
-      attendees: [{ email: "dev@vez.io" }],
-      end: {
-        dateTime: end,
-        timeZone: "America/Los_Angeles"
-      }
-    };
-  }
-
-  mapEvent = event => ({
-    title: event.summary,
-    start: moment(event.start.dateTime).toDate(),
-    end: moment(event.end.dateTime).toDate()
-  });
 
   signIn = () => {
     gapi.auth2.getAuthInstance().signIn();
@@ -118,23 +61,14 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.gapiReady && this.state.events) {
-      return (
-        <div>
-          <BigCalendar
-            popup
-            selectable
-            onSelectSlot={slotInfo =>
-              this.createEvent({ start: slotInfo.start, end: slotInfo.end })}
-            events={this.state.events}
-            defaultDate={new Date()}
-          />
-        </div>
-      );
+    if (this.state.gapiReady && this.state.signIn) {
+      return <Calendar />;
     } else {
       return (
         <div>
-          {" "}<button onClick={this.signIn}>auth</button>
+          <button onClick={this.signIn} className="btn btn--stripe">
+            auth
+          </button>
         </div>
       );
     }
