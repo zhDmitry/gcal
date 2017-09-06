@@ -17,14 +17,6 @@ import Header from "../components/week/header";
 import WeekEvent from "../components/week/weekEvent";
 import EventCreate from "../components/EventCreate";
 
-function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
 const components = {
   eventWrapper: Wrapper,
   week: {
@@ -41,7 +33,7 @@ class Calendar extends React.Component {
   state = {};
 
   componentDidMount() {
-    this.props.getEvents();
+    this.props.getEvents("All");
   }
   listUpcomingEvents = () => {
     gapi.client.calendar.events
@@ -120,6 +112,7 @@ class Calendar extends React.Component {
             onClose={e => this.props.closeModal("createEvent")}
           />
         </Modal>
+        <button onClick={e => this.props.getEvents()}>qwe</button>
         <BigCalendar
           selectable
           eventPropGetter={el => {
@@ -156,7 +149,7 @@ const enhance = compose(
       modalPayload: state.modal.createEvent && state.modal.createEvent.payload
     };
   }),
-  withActions({ ...actions, ...modalActions })
+  withActions({ ...actions, ...modalActions }, "Calendar")
 );
 
 export default enhance(Calendar);

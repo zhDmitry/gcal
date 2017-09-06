@@ -1,11 +1,12 @@
 /* global gapi*/
 
 import moment from "moment";
-import { createReducer, call } from "actionware";
+import {
+  createReducer
+} from "actionware";
 import { createState } from "stateware";
 
 import { toGoogleEvent, mapEvent, isIntersect } from "./utils";
-
 
 const getEvents = async () => {
   return await gapi.client.calendar.events
@@ -60,13 +61,13 @@ const editEvent = (event, store) => {
   });
 };
 
-export const actions = {
-  createEvent,
-  getEvents,
-  editEvent,
-  deleteEvent
-};
-
+export const actions = 
+  {
+    createEvent,
+    getEvents,
+    editEvent,
+    deleteEvent
+  }
 const initalState = createState({
   events: [],
   eventsMap(events) {
@@ -100,19 +101,14 @@ export const reducer = createReducer(initalState)
   })
   .on(actions.getEvents, (state, events) => state.copy({ events }))
   .on(actions.editEvent, (state, event) => {
-    console.log(state, event);
     const eventIndex = state.events.findIndex(el => el.id === event.id);
     state.events[eventIndex] = event;
     return state.copy({
       events: state.events
     });
   })
-  .on(deleteEvent, (state, id) => {
+  .on(actions.deleteEvent, (state, id) => {
     const eventIndex = state.events.findIndex(el => el.id === id);
     state.events.splice(eventIndex, 1);
     return state.copy({ events: [...state.events] });
   })
-  .onBusy(actions.editEvent, (state, action) => {
-    console.log(action);
-    return state.update('qwerw.qwwer.qwer', ()=> {});
-  });

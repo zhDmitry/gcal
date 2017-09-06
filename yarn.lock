@@ -47,9 +47,9 @@ acorn@^5.0.0, acorn@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.1.1.tgz#53fe161111f912ab999ee887a90a0bc52822fd75"
 
-actionware@^7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/actionware/-/actionware-7.2.1.tgz#e14432ec7011fc48132371f2f8175366cc1f475f"
+actionware@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/actionware/-/actionware-8.0.0.tgz#1c2aef1130a8500c55518c590526c5ac6bab8989"
 
 address@1.0.2, address@^1.0.1:
   version "1.0.2"

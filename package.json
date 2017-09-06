@@ -2,7 +2,7 @@
   "name": "google-calendar",
   "version": "0.1.0",
   "dependencies": {
-    "actionware": "^7.2.1",
+    "actionware": "^8.0.0",
     "gh-pages": "^1.0.0",
     "moment": "^2.18.1",
     "popper.js": "^1.12.5",
